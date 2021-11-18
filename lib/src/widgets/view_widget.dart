@@ -1,19 +1,45 @@
 import 'package:flutter/material.dart';
 
-class ListWidget extends StatefulWidget {
-  const ListWidget({Key? key}) : super(key: key);
+import '../utility/web_service.dart';
+
+class ViewWidget extends StatefulWidget {
+  final YoudayRecord record;
+
+  const ViewWidget({Key? key, required this.record}) : super(key: key);
 
   @override
-  _ListWidgetState createState() => _ListWidgetState();
+  State<StatefulWidget> createState() => _ViewWidgetState(record: record);
 }
 
-class _ListWidgetState extends State<ListWidget> {
+class _ViewWidgetState extends State<ViewWidget> {
+  final YoudayRecord record;
   final _formKey = GlobalKey<FormState>();
   String title = '';
   String description = '';
 
+  _ViewWidgetState({required this.record});
+
   @override
   Widget build(BuildContext context) {
+    List<TextFormField> fieldsForm = <TextFormField>[];
+
+    for (YoudayField field in record.fields) {
+      fieldsForm.add(TextFormField(
+        decoration: InputDecoration(
+          filled: true,
+          hintText: '',
+          labelText: field.label,
+        ),
+        onChanged: (value) {
+          setState(() {
+            title = value;
+          });
+        },
+        readOnly: true,
+        initialValue: field.value,
+      ));
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('List Object'),
@@ -31,31 +57,7 @@ class _ListWidgetState extends State<ListWidget> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      ...[
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            filled: true,
-                            hintText: '',
-                            labelText: 'Raison sociale',
-                          ),
-                          onChanged: (value) {
-                            setState(() {
-                              title = value;
-                            });
-                          },
-                          readOnly: true,
-                          initialValue: "Youday CRM",
-                        ),
-                      ].expand(
-                        (widget) => [
-                          widget,
-                          const SizedBox(
-                            height: 24,
-                          )
-                        ],
-                      )
-                    ],
+                    children: fieldsForm,
                   ),
                 ),
               ),

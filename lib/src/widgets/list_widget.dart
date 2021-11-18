@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/view_widget.dart';
+
 import '../utility/web_service.dart';
+
+import '../../main.dart';
 
 class ListWidget extends StatefulWidget {
   final YoudayObject object;
@@ -28,9 +32,11 @@ class _ListWidgetState extends State<ListWidget> {
         itemBuilder: (BuildContext context, int index) {
           return Card(
             child: InkWell(
-              onTap: () => Navigator.pushNamed(
-                context,
-              ),
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          ViewWidget(record: object.records[index]))),
               child: Container(
                 padding: const EdgeInsets.all(10),
                 margin: const EdgeInsets.all(5),

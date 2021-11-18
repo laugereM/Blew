@@ -10,94 +10,15 @@ class WebService {
     );
     YoudayRecord companyRecord = YoudayRecord(
       text: "Youday CRM",
+      id: "8405D083199649D9AAE338D34FD40B1B",
     );
-    YoudayRecord companyRecord2 = YoudayRecord(
-      text: "Test Société",
-    );
-    YoudayRecord companyRecord3 = YoudayRecord(
-      text: "Test Société",
-    );
-    YoudayRecord companyRecord4 = YoudayRecord(
-      text: "Test Société",
-    );
-    YoudayRecord companyRecord5 = YoudayRecord(
-      text: "Test Société",
-    );
-    YoudayRecord companyRecord6 = YoudayRecord(
-      text: "Test Société",
-    );
-    YoudayRecord companyRecord7 = YoudayRecord(
-      text: "Test Société",
-    );
-    YoudayRecord companyRecord8 = YoudayRecord(
-      text: "Test Société",
-    );
-    YoudayRecord companyRecord9 = YoudayRecord(
-      text: "Test Société",
-    );
-    YoudayRecord companyRecord10 = YoudayRecord(
-      text: "Test Société",
-    );
-    companyRecord.addField(const YoudayField(
+    companyRecord.addField(YoudayField(
       label: "Raison sociale",
-      type: 0,
-      key: "ZZ12345678",
-    ));
-    companyRecord2.addField(const YoudayField(
-      label: "Raison sociale",
-      type: 0,
-      key: "ZZ12345678",
-    ));
-    companyRecord3.addField(const YoudayField(
-      label: "Raison sociale",
-      type: 0,
-      key: "ZZ12345678",
-    ));
-    companyRecord4.addField(const YoudayField(
-      label: "Raison sociale",
-      type: 0,
-      key: "ZZ12345678",
-    ));
-    companyRecord5.addField(const YoudayField(
-      label: "Raison sociale",
-      type: 0,
-      key: "ZZ12345678",
-    ));
-    companyRecord6.addField(const YoudayField(
-      label: "Raison sociale",
-      type: 0,
-      key: "ZZ12345678",
-    ));
-    companyRecord7.addField(const YoudayField(
-      label: "Raison sociale",
-      type: 0,
-      key: "ZZ12345678",
-    ));
-    companyRecord8.addField(const YoudayField(
-      label: "Raison sociale",
-      type: 0,
-      key: "ZZ12345678",
-    ));
-    companyRecord9.addField(const YoudayField(
-      label: "Raison sociale",
-      type: 0,
-      key: "ZZ12345678",
-    ));
-    companyRecord10.addField(const YoudayField(
-      label: "Raison sociale",
+      value: "Youday CRM",
       type: 0,
       key: "ZZ12345678",
     ));
     companyObject.addRecord(companyRecord);
-    companyObject.addRecord(companyRecord2);
-    companyObject.addRecord(companyRecord3);
-    companyObject.addRecord(companyRecord4);
-    companyObject.addRecord(companyRecord5);
-    companyObject.addRecord(companyRecord6);
-    companyObject.addRecord(companyRecord7);
-    companyObject.addRecord(companyRecord8);
-    companyObject.addRecord(companyRecord9);
-    companyObject.addRecord(companyRecord10);
     list.add(companyObject);
 
     // Contacts exemple
@@ -108,9 +29,11 @@ class WebService {
     );
     YoudayRecord contactRecord = YoudayRecord(
       text: "Martin Laugère",
+      id: "A7D58A8F6FCE443497DB92DB02B088F7",
     );
-    contactRecord.addField(const YoudayField(
+    contactRecord.addField(YoudayField(
       label: "Nom",
+      value: "Martin",
       type: 0,
       key: "ZZ87654321",
     ));
@@ -136,9 +59,10 @@ class YoudayObject {
 
 class YoudayRecord {
   final String text;
+  final String id;
   List<YoudayField> fields = <YoudayField>[];
 
-  YoudayRecord({required this.text});
+  YoudayRecord({required this.text, required this.id});
 
   void addField(YoudayField field) {
     fields.add(field);
@@ -147,9 +71,13 @@ class YoudayRecord {
 
 class YoudayField {
   final String label;
+  final String value;
   final int type;
   final String key;
 
-  const YoudayField(
-      {required this.label, required this.type, required this.key});
+  YoudayField(
+      {required this.label,
+      required this.value,
+      required this.type,
+      required this.key});
 }
