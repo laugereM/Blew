@@ -12,6 +12,10 @@ class WebService {
       text: "Youday CRM",
       id: "8405D083199649D9AAE338D34FD40B1B",
     );
+    YoudayRecord companyRecord2 = YoudayRecord(
+      text: "Test Société",
+      id: "8405D083199649D9AAE338D34FD40B1B",
+    );
     companyRecord.addField(YoudayField(
       label: "Raison sociale",
       value: "Youday CRM",
@@ -24,7 +28,20 @@ class WebService {
       type: 0,
       key: "ZZ87654321",
     ));
+    companyRecord2.addField(YoudayField(
+      label: "Raison sociale",
+      value: "Test Société",
+      type: 0,
+      key: "ZZ12345678",
+    ));
+    companyRecord2.addField(YoudayField(
+      label: "Code postal",
+      value: "37380",
+      type: 0,
+      key: "ZZ87654321",
+    ));
     companyObject.addRecord(companyRecord);
+    companyObject.addRecord(companyRecord2);
     list.add(companyObject);
 
     // Contacts exemple
