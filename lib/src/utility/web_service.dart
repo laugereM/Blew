@@ -18,6 +18,12 @@ class WebService {
       type: 0,
       key: "ZZ12345678",
     ));
+    companyRecord.addField(YoudayField(
+      label: "Code postal",
+      value: "44300",
+      type: 0,
+      key: "ZZ87654321",
+    ));
     companyObject.addRecord(companyRecord);
     list.add(companyObject);
 
